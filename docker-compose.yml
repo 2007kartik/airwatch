@@ -1,0 +1,31 @@
+# ============================================================
+# AirWatch — Docker Compose
+# Provides a containerised PostgreSQL instance for local dev.
+# NOTE: Docker Desktop must be running to use this.
+# If you are using the local Windows PostgreSQL service instead,
+# you do NOT need to run this file.
+# ============================================================
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: airwatch_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: airwatch_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
+      POSTGRES_DB: airwatch
+    ports:
+      - "5432:5432"
+    volumes:
+      - airwatch_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airwatch_user -d airwatch"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  airwatch_pgdata:
+    driver: local
