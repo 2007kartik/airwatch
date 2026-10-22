@@ -1,5 +1,0 @@
-Read `PROJECT_CONTEXT.md` in the root of this workspace completely before making changes. It is the source of truth for AirWatch requirements and architecture.
-
-We are building AirWatch using React + Tailwind CSS + Recharts, FastAPI, PostgreSQL, SQLAlchemy/Alembic, and a standalone Python simulator that generates sensor-like data every 5 seconds. We are not using Wokwi or physical hardware. Kafka is intentionally excluded from the initial version.
-
-First inspect the existing workspace and preserve useful code. Summarize the current state, identify gaps against `PROJECT_CONTEXT.md`, and propose a phased implementation checklist. Implement one phase at a time, test each phase, and report files changed, commands to run, checks performed, and remaining issues. Do not fabricate test results or claim components work unless verified. All generated readings must be labelled as simulated, and the dashboard must use backend/database data rather than hardcoded mock values. Start with Phase 1 (inspection and plan); do not generate the whole project in one uncontrolled step.
